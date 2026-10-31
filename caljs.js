@@ -22,12 +22,22 @@ function getHumanChoice (){
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-
+function playGame () {
 
 let humanScore = 0;
 let computerScore = 0;
 
-
+for (let i = 0 ; i < 5 ; i++){
+    const endvalue = playRound(getHumanChoice(), getComputerChoice())
+    console.log(endvalue);
+}
+ if (humanScore > computerScore){
+    return "human win!";
+} else if (humanScore < computerScore){
+    return "computer win!";
+} else {
+    return "draw!";
+}
     function playRound(humanChoice, computerChoice) { 
         if ((humanChoice.toLowerCase() === "rock") && (computerChoice.toLowerCase() === "paper")) {
             ++computerScore;
