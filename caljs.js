@@ -57,16 +57,25 @@ function getComputerChoice  () {
         const resultDiv = document.createElement("div");
         const humanP = document.createElement("p");
         const computerP = document.createElement("p");
+        const winnerP = document.createElement("p");
+
+        function isWinner(){
+            if(humanScore==5)return "human win!";
+            if(computerScore==5) return "computer win!";
+            return "";            
+        }
 
        function updateScore() {
             humanP.textContent = "humanScore: " + humanScore;
             computerP.textContent = "computerScore: " + computerScore;
+            winnerP.textContent = isWinner();
         } 
 
         ["rock","paper","scissors"].forEach((choice) => {
             const button = document.createElement("button");
             button.textContent = choice;
             button.addEventListener("click", () => {
+                if (humanScore >= 5 || computerScore >= 5) return;
                 const computerChoice = getComputerChoice();
                 resultDiv.textContent = playRound(choice, computerChoice);
                 updateScore();
@@ -74,11 +83,14 @@ function getComputerChoice  () {
             body.appendChild(button);
         })
          
-        const winner   = []
+        
+
         
         body.appendChild(resultDiv);  
         body.appendChild(humanP);
         body.appendChild(computerP);
+        body.appendChild(winnerP);
+
         
  
 
